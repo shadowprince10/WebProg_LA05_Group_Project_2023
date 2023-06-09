@@ -35,10 +35,18 @@ class ProductController extends Controller
             $imgPath = "public/assets/products/";
             // untuk upload file, file yang di-submit user di-upload ke direktori storage > app > public
             // direktori storage > app > public terhubung dengan direktori public > storage
+
+            // bagaimana cara memasukkan $imgPath ke atribut image?
             $img -> storeAs($imgPath, $imgName . '.' . $imgType);
         }
 
-        Product::create($validatedInput);
+        Product::create([
+            'name' => $validatedInput['name'],
+            'description' => $validatedInput['description'],
+            'price' => $validatedInput['price'],
+            'category' => $validatedInput['category'],
+            'image' => $validatedInput['image'],
+        ]);
 
         return redirect() -> route('products.view');
     }
@@ -67,7 +75,13 @@ class ProductController extends Controller
             $img -> storeAs($imgPath, $imgName . '.' . $imgType);
         }
 
-        $product -> update($validatedInput);
+        $product -> update([
+            'name' => $validatedInput['name'],
+            'description' => $validatedInput['description'],
+            'price' => $validatedInput['price'],
+            'category' => $validatedInput['category'],
+            'image' => $validatedInput['image'],
+        ]);
 
         return redirect() -> route('products.view');
     }
@@ -76,5 +90,27 @@ class ProductController extends Controller
         $product -> delete();
 
         return redirect() -> route('products.view');
+    }
+
+    public function redirectCategory(Product $product) {
+        if ($product -> category === 'clothes') {
+            return redirect() -> route('clothes.view');
+        }
+
+        elseif ($product -> category === 'figure') {
+            return redirect() -> route('figure.view');
+        }
+
+        elseif ($product -> category === 'keychain') {
+            return redirect() -> route('keychain.view');
+        }
+
+        elseif ($product -> category === 'stationary') {
+            return redirect() -> route('stationary.view');
+        }
+
+        else {
+            return redirect() -> route('manga.view');
+        }
     }
 }

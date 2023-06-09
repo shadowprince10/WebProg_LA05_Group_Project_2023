@@ -17,16 +17,16 @@
                                     <form method = "POST" action = "{{ route('register.submit') }}">
                                         @csrf
                                         <div class = "mb-3">
-                                            <label for = "username" class = "register-form-label">Username</label>
-                                            <input type = "text" id = "username" name = "username" class = "register-form-control" required autofocus>
+                                            <label for = "username" class = "form-label">Username</label>
+                                            <input type = "text" id = "username" name = "username" class = "form-control" required autofocus>
                                             @error('username')
                                                     <p class = "text-danger">{{ $message }}</p>
                                             @enderror
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for = "email" class = "register-form-label">Email</label>
-                                            <input type = "email" id = "email" name = "email" class = "register-form-control" required>
+                                            <label for = "email" class = "form-label">Email</label>
+                                            <input type = "email" id = "email" name = "email" class = "form-control" required>
                                             @error('email')
                                                     <p class = "text-danger">{{ $message }}</p>
                                             @enderror

@@ -14,21 +14,21 @@
                             <div class="row justify-content-center">
                                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                     <p class = "text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Login</p>
-                                    <form method = "POST" action="{{ route('login.submit') }}">
+                                    <form method = "POST" action = "{{ route('login.submit') }}">
                                     @csrf
                                         <!-- Input registered email to login -->
                                         <div class = "d-flex flex-row align-items-center mb-4">
                                             <div class = "form-outline flex-fill mb-0">
-                                                <label class = "login-form-label" for = "email">Email</label>
-                                                <input type = "email" id = "email" name = "email" class = "login-form-control" placeholder = "Please type a valid email address" required autofocus>
+                                                <label class = "form-label" for = "email">Email</label>
+                                                <input type = "email" id = "email" name = "email" class = "form-control" placeholder = "Please type a valid email address" required autofocus>
                                             </div>
                                         </div>
 
                                         <!-- Input registered password to login -->
                                         <div class = "d-flex flex-row align-items-center mb-4">
                                             <div class = "form-outline flex-fill mb-0">
-                                                <label class = "login-form-label" for="password">Password</label>
-                                                <input type = "password" id = "password" name = "password" class = "login-form-control" placeholder = "Please type a password minimum 8 characters" required>
+                                                <label class = "form-label" for="password">Password</label>
+                                                <input type = "password" id = "password" name = "password" class = "form-control" placeholder = "Please type a password minimum 8 characters" required>
                                             </div>
                                         </div>
 

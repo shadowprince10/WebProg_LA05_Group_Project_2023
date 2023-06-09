@@ -44,12 +44,13 @@ Route::get('/about', [AboutUsController::class, 'viewAboutUs']) -> name('about-u
 
 // Admin Routes
 Route::middleware(['auth', 'admin']) -> group(function () {
-    // Route::get('/homepage', [AllController::class, 'homepage']) -> name('homepage');
+    // Route::get('/homepage', [HomeController::class, 'homepage']) -> name('homepage');
 
     Route::prefix('/products') -> group(function() {
         Route::get('/', [ProductController::class, 'viewProducts']) -> name('products.view');
         Route::get('/create', [ProductController::class, 'postProducts']) -> name('products.post'); // input product data to add or post to the Pasar Anime web page
         Route::post('/', [ProductController::class, 'addProducts']) -> name('products.add'); // store inputted product data to database and post products based on the inputted product data
+        Route::get('/{productID}', [ProductController::class, 'viewProductsBasedOnID']) -> name('productID.view');
         Route::get('/{product}/edit', [ProductController::class, 'editProducts']) -> name('products.edit'); // input product data to update/edit
         Route::put('/{product}', [ProductController::class, 'updateProducts']) -> name('products.update'); // update product based on inputted product data for updates
         Route::delete('/{product}', [ProductController::class, 'deleteProducts']) -> name('products.delete');
@@ -60,11 +61,13 @@ Route::middleware(['auth', 'admin']) -> group(function () {
 
 // Customer Routes
 Route::middleware(['auth', 'customer']) -> group(function () {
-    // Route::get('/homepage', [AllController::class, 'homepage']) -> name('homepage');
+    // Route::get('/homepage', [HomeController::class, 'homepage']) -> name('homepage');
     Route::get('/products', [ProductController::class, 'viewProducts']) -> name('products.view');
 
-    Route::prefix('/category') -> group(function() {
+    Route::prefix('/products/category') -> group(function() {
         Route::get('/{category}', [CategoryController::class, 'redirectCategory'])->name('category.redirect');
+
+        // routes for viewing products based on category
         Route::get('/clothes', [CategoryController::class, 'viewClothes']) -> name('clothes.view');
         Route::get('/figure', [CartController::class, 'viewFigures']) -> name('figure.view');
         Route::get('/keychain', [CartController::class, 'viewKeychains']) -> name('keychain.view');
