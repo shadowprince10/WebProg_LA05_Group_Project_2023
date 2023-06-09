@@ -12,6 +12,7 @@ class UserController extends Controller
 	}
 
     public function storeUserData() {
+        // validasi form register
         $validatedInput = $request->validate([
             'username' => 'required|unique:users',
             'email' => 'required|email|unique:users',
@@ -22,13 +23,13 @@ class UserController extends Controller
         ]);
 
 
-        $duplicateUsername = User::where('username', $validatedData['username']) -> exists();
-        if ($duplicateUsername) {
+        $usernameExists = User::where('username', $validatedInput['username']) -> exists();
+        if ($usernameExists) {
             return back() -> withErrors(['username' => 'The username has already been taken.']) -> withInput();
         }
 
-        $duplicateEmail = User::where('email', $validatedData['email']) -> exists();
-        if ($duplicateEmail) {
+        $emailExists = User::where('email', $validatedInput['email']) -> exists();
+        if ($emailExists) {
             return back() -> withErrors(['email' => 'The email has already been taken.']) -> withInput();
         }
 
@@ -51,11 +52,24 @@ class UserController extends Controller
     }
 
     public function auth() {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => 'required|min:8',
+        ]);
 
+        if (Auth::attempt($credentials, $request -> filled('remember-me'))) {
+            $request -> session() -> regenerate();
+
+            return redirect() -> route('/homepage');
+        }
+
+        return back()->withErrors([
+            'email' => 'Invalid credentials.',
+        ]);
     }
 
-    public function viewProfile($userID) {
-        $user = User::find($userID);
+    public function viewProfile() {
+        $user = User::all;
 
         return view('profile', compact('user'), ['title' => 'Profile']);
     }
