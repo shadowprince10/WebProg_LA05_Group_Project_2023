@@ -2,6 +2,7 @@
 
 @section('container')
     {{-- OUtfits Category Section --}}
+    {{-- Categories: clothes, figure, key chain, stationary, manga (comic) --}}
     <div class = "section-title">
         <h2 style = "color:antiquewhite;"><b>Clothes</b></h2>
         <br>

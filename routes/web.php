@@ -12,6 +12,12 @@ use App\Models\Shipping;
 use App\Models\Transaction;
 use App\Models\WishlistProduct;
 
+use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 
 use Illuminate\Support\Facades\Route;
@@ -42,11 +48,11 @@ Route::middleware(['auth', 'admin']) -> group(function () {
 
     Route::prefix('/products') -> group(function() {
         Route::get('/', [ProductController::class, 'viewProducts']) -> name('products');
-        Route::post('/', [ProductController::class, 'storeProduct']) -> name('products.store'); // store inputted product data to database
-        Route::get('/create', [ProductController::class, 'createProduct']) -> name('products.create'); // input product data and post products based on the inputted product data
-        Route::get('/{productID}/edit', [AllController::class, 'editProduct']) -> name('products.edit'); // input product data to update/edit
-        Route::put('/{productID}', [AllController::class, 'updateProduct']) -> name('products.update'); // update product based on inputted product data for updates
-        Route::delete('/{productID}', [AllController::class, 'deleteProduct']) -> name('products.delete');
+        Route::get('/create', [ProductController::class, 'createProduct']) -> name('products.add'); // input product data to add or post to the Pasar Anime web page
+        Route::post('/', [ProductController::class, 'storeProduct']) -> name('products.store'); // store inputted product data to database and post products based on the inputted product data
+        Route::get('/{productID}/edit', [ProductController::class, 'editProduct']) -> name('products.edit'); // input product data to update/edit
+        Route::put('/{productID}', [ProductController::class, 'updateProduct']) -> name('products.update'); // update product based on inputted product data for updates
+        Route::delete('/{productID}', [ProductController::class, 'deleteProduct']) -> name('products.delete');
     });
 
     // Route::get('/transactions', [AllController::class, 'viewTransactions']) -> name('transactions.view');
@@ -55,7 +61,7 @@ Route::middleware(['auth', 'admin']) -> group(function () {
 // Customer Routes
 Route::middleware(['auth', 'customer']) -> group(function () {
     // Route::get('/homepage', [AllController::class, 'homepage']) -> name('homepage');
-    Route::get('/products', [ProductController::class, 'viewProducts']) -> name('products');
+    Route::get('/products', [ProductController::class, 'viewProducts']) -> name('products.view');
 
     Route::prefix('/cart') -> group(function() {
         Route::get('/', [CartController::class, 'viewCart']) -> name('cart.view');
@@ -65,9 +71,9 @@ Route::middleware(['auth', 'customer']) -> group(function () {
     });
 
     Route::prefix('/wishlist') -> group(function() {
-        Route::get('/', [WishlistController::class, 'viewWishlist'])->name('wishlist.view');
-        Route::get('/{wishlistID}/add', [WishlistController::class, 'addToWishlist'])->name('wishlist.add');
-        Route::get('/{wishlistID}/delete', [WishlistController::class, 'removeFromWishlist'])->name('wishlist.delete');
+        Route::get('/', [WishlistController::class, 'viewWishlist']) -> name('wishlist.view');
+        Route::get('/{wishlistID}/add', [WishlistController::class, 'addToWishlist']) -> name('wishlist.add');
+        Route::get('/{wishlistID}/delete', [WishlistController::class, 'removeFromWishlist']) -> name('wishlist.delete');
     });
 });
 
