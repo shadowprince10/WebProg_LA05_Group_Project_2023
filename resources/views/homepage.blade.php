@@ -8,7 +8,7 @@
         <div class = "card">
             <img src = "{{ asset('assets/anime-market-items/clothes/animeclothes2.jpg') }}" class = "card-img-top img-fluid" style = "height: 400px;">
             <div class = "card-body">
-                <a href = "{{ route('clothes.view') }}">Clothes</h5>
+                <a href = "{{ route('clothes.view', ['category' => 'clothes']) }}">Clothes</a>
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
         <div class = "card">
             <img src = "{{ asset('assets/anime-market-items/figure/fig3.jpg') }}" class = "card-img-top img-fluid" style = "height: 400px;">
             <div class = "card-body">
-                <a href = "{{ route('figure.view') }}">Figures</h5>
+                <a href = "{{ route('figure.view', ['category' => 'figure']) }}">Figures</a>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
         <div class = "card">
             <img src = "{{ asset('assets/anime-market-items/keychain/kc1.jpg') }}" class = "card-img-top img-fluid" style = "height: 400px;">
             <div class = "card-body">
-                <a href = "{{ route('keychain.view') }}">Keychains</h5>
+                <a href = "{{ route('keychain.view', ['category' => 'keychain']) }}">Keychains</a>
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
         <div class = "card">
             <img src = "{{ asset('assets/anime-market-items/stationery/stationery1.jpg') }}" class = "card-img-top img-fluid" style = "height: 400px;">
             <div class = "card-body">
-                <a href = "{{ route('stationary.view') }}">Stationaries</h5>
+                <a href = "{{ route('stationary.view', ['category' => 'stationary']) }}">Stationaries</a>
             </div>
         </div>
     </div>
@@ -48,7 +48,7 @@
         <div class = "card">
             <img src = "{{ asset('assets/anime-market-items/manga/komik_horimiya3.jpg') }}" class = "card-img-top img-fluid" style = "height: 400px;">
             <div class = "card-body">
-                <a href = "{{ route('manga.view') }}">Mangas</h5>
+                <a href = "{{ route('manga.view', ['category' => 'manga']) }}">Mangas</a>
             </div>
         </div>
     </div>

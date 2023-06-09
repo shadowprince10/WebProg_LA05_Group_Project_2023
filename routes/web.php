@@ -47,12 +47,12 @@ Route::middleware(['auth', 'admin']) -> group(function () {
     // Route::get('/homepage', [AllController::class, 'homepage']) -> name('homepage');
 
     Route::prefix('/products') -> group(function() {
-        Route::get('/', [ProductController::class, 'viewProducts']) -> name('products');
-        Route::get('/create', [ProductController::class, 'createProduct']) -> name('products.add'); // input product data to add or post to the Pasar Anime web page
-        Route::post('/', [ProductController::class, 'storeProduct']) -> name('products.store'); // store inputted product data to database and post products based on the inputted product data
-        Route::get('/{productID}/edit', [ProductController::class, 'editProduct']) -> name('products.edit'); // input product data to update/edit
-        Route::put('/{productID}', [ProductController::class, 'updateProduct']) -> name('products.update'); // update product based on inputted product data for updates
-        Route::delete('/{productID}', [ProductController::class, 'deleteProduct']) -> name('products.delete');
+        Route::get('/', [ProductController::class, 'viewProducts']) -> name('products.view');
+        Route::get('/create', [ProductController::class, 'postProducts']) -> name('products.post'); // input product data to add or post to the Pasar Anime web page
+        Route::post('/', [ProductController::class, 'addProducts']) -> name('products.add'); // store inputted product data to database and post products based on the inputted product data
+        Route::get('/{product}/edit', [ProductController::class, 'editProducts']) -> name('products.edit'); // input product data to update/edit
+        Route::put('/{product}', [ProductController::class, 'updateProducts']) -> name('products.update'); // update product based on inputted product data for updates
+        Route::delete('/{product}', [ProductController::class, 'deleteProducts']) -> name('products.delete');
     });
 
     // Route::get('/transactions', [AllController::class, 'viewTransactions']) -> name('transactions.view');
@@ -64,6 +64,7 @@ Route::middleware(['auth', 'customer']) -> group(function () {
     Route::get('/products', [ProductController::class, 'viewProducts']) -> name('products.view');
 
     Route::prefix('/category') -> group(function() {
+        Route::get('/{category}', [CategoryController::class, 'redirectCategory'])->name('category.redirect');
         Route::get('/clothes', [CategoryController::class, 'viewClothes']) -> name('clothes.view');
         Route::get('/figure', [CartController::class, 'viewFigures']) -> name('figure.view');
         Route::get('/keychain', [CartController::class, 'viewKeychains']) -> name('keychain.view');
@@ -84,8 +85,6 @@ Route::middleware(['auth', 'customer']) -> group(function () {
         Route::get('/{wishlistID}/delete', [WishlistController::class, 'removeFromWishlist']) -> name('wishlist.delete');
     });
 });
-
-Route::get('/search', [AllController::class, 'search'])->name('search');
 
 
 
