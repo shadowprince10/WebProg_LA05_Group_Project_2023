@@ -63,6 +63,14 @@ Route::middleware(['auth', 'customer']) -> group(function () {
     // Route::get('/homepage', [AllController::class, 'homepage']) -> name('homepage');
     Route::get('/products', [ProductController::class, 'viewProducts']) -> name('products.view');
 
+    Route::prefix('/category') -> group(function() {
+        Route::get('/clothes', [CategoryController::class, 'viewClothes']) -> name('clothes.view');
+        Route::get('/figure', [CartController::class, 'viewFigures']) -> name('figure.view');
+        Route::get('/keychain', [CartController::class, 'viewKeychains']) -> name('keychain.view');
+        Route::get('/manga', [CartController::class, 'viewMangas']) -> name('manga.view');
+        Route::get('/stationary', [CartController::class, 'viewStationaries']) -> name('stationary.view');
+    });
+
     Route::prefix('/cart') -> group(function() {
         Route::get('/', [CartController::class, 'viewCart']) -> name('cart.view');
         Route::get('/{cartID}/add', [CartController::class, 'addToCart']) -> name('cart.add');
