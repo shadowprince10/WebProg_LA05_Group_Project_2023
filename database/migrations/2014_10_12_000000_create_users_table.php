@@ -11,18 +11,22 @@ return new class extends Migration
      *
      * @return void
      */
+    /*Create users table*/
+
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id('userID');
+            $table->increments('userID');
+            $table->unsignedBigInteger('transactionID');
+            $table->foreign('transactionID')->references('transactionID')->on('transactions');
             $table->string('username');
             $table->string('email')->unique();
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->unique();
             $table->string('address');
             $table->string('phone');
-            $table->unsignedBigInteger('transactionID');
-            $table->foreign('transactionID')->references('transactionID')->on('transactions');
+            // $table->unsignedBigInteger('transactionID');
+            // $table->foreign('transactionID')->references('transactionID')->on('transactions');
             $table->timestamps();
         });
     }

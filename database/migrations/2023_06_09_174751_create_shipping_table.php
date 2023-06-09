@@ -14,16 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('shipping', function (Blueprint $table) {
-            $table->id('shipID');
+            $table->increments('shipID');
             $table->integer('deliveryCost');
             $table->string('pickupLocation');
             $table->string('destination');
-            $table->unsignedBigInteger('courierID');
-            $table->foreign('courierID')->references('courierID')->on('couriers');
-            $table->unsignedBigInteger('orderID');
-            $table->foreign('orderID')->references('orderID')->on('orders');
-            $table->unsignedBigInteger('userID');
-            $table->foreign('userID')->references('userID')->on('users');
             $table->unsignedBigInteger('productID');
             $table->foreign('productID')->references('productID')->on('products');
             $table->timestamps();

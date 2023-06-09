@@ -14,20 +14,18 @@ return new class extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id('productID');
-            $table->string('productName');
-            $table->string('productImg');
+            $table->increments('productID');
+            $table->string('name');
+            $table->string('image');
+
             $table->integer('price');
             $table->string('description');
             $table->integer('price');
             $table->integer('discount'); //  mau langsung harga diskon atau diskon dalam bentuk persen?
-            $table->integer('productQuantity');
-            $table->integer('productRating');
+
+            $table->integer('quantity');
+            $table->integer('rating');
             $table->integer('wishFlag')->default(0); // 1 untuk memasukkan produk ke wishlist dan mewarnai hati sebagai icon wishlist menjadi merah
-            $table->unsignedBigInteger('brandID');
-            $table->foreign('brandID')->references('brandID')->on('brands');
-            $table->unsignedBigInteger('categoryID');
-            $table->foreign('categoryID')->references('categoryID')->on('categories');
             $table->unsignedBigInteger('transactionID');
             $table->foreign('transactionID')->references('transactionID')->on('transactions');
             $table->timestamps();
