@@ -40,6 +40,7 @@
                                     <button type = "submit" class = "btn btn-danger btn-lg">Delete</button>
                                 </form>
                             </div>
+
                         @elseif(auth() -> user() && auth() -> user() -> role === 'customer')
                             <div class = "d-flex justify-content-between">
                                 <form action = "{{ route('wishlist.add', $product -> productID) }}" method = "POST">

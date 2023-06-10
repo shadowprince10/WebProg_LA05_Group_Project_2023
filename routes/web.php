@@ -28,7 +28,7 @@ Route::get('/login', [UserController::class, 'login']) -> name('login');
 Route::post('/login', [UserController::class, 'auth']) -> name('login.submit'); // authenticate user to go to user pages and admin to go to admin pages with features that only admins can access
 Route::get('/register', [UserController::class, 'register']) -> name('register');
 Route::post('/register', [UserController::class, 'storeUserData']) -> name('register.submit'); // store inputted user data to database
-Route::get('/about', [AboutUsController::class, 'viewAboutUs']) -> name('about-us');
+Route::get('/about-us', [AboutUsController::class, 'viewAboutUs']) -> name('about-us');
 Route::get('/search', [ProductController::class, 'searchProduct']) -> name('search');
 
 // Admin Routes
