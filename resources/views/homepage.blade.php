@@ -57,6 +57,8 @@
 {{-- Footer --}}
 @extends('layout_format.footer')
 
+{{Cookie:get('remember')}} {{-- session --}}
+
 {{-- REFERENCES --}}
 {{-- a. https://www.youtube.com/watch?v=XdaDDmC00fs --}}
 {{-- b. https://www.nicesnippets.com/blog/how-to-add-carousel-slider-in-laravel --}}

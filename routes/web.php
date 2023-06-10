@@ -41,6 +41,7 @@ Route::post('/login', [UserController::class, 'auth']) -> name('login.submit'); 
 Route::get('/register', [UserController::class, 'register']) -> name('register');
 Route::post('/register', [UserController::class, 'storeUserData']) -> name('register.submit'); // store inputted user data to database
 Route::get('/about', [AboutUsController::class, 'viewAboutUs']) -> name('about-us');
+Route::get('/search', [ProductController::class, 'searchProduct']) -> name('search');
 
 // Admin Routes
 Route::middleware(['auth', 'admin']) -> group(function () {

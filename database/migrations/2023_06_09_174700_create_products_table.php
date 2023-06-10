@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('price');
             $table->string('description');
             $table->integer('price');
-            $table->integer('discount'); //  mau langsung harga diskon atau diskon dalam bentuk persen?
+            $table->decimal('disc', 3, 2); //  mau langsung harga diskon atau diskon dalam bentuk persen?
 
             $table->integer('quantity');
             $table->integer('rating');

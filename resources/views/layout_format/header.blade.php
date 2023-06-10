@@ -35,6 +35,24 @@
                     <li class = "nav-item">
                         <a class = "nav-link" href = "/register">Register/Login</a>
                     </li>
+                    <form class = "d-flex" role = "search" action = "{{ route('search') }}">
+                        <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                      </form>
+                      <li class="nav-item dropdown">
+                          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                             data-bs-toggle="dropdown" aria-expanded="false" style="color: darkcyan;">
+                              Profile
+                          </a>
+                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <li>
+                                  <a class="dropdown-item" href="{{ route('cart') }}" style="color: darkcyan;">View Cart</a>
+                              </li>
+                              <li>
+                                  <a class="dropdown-item" href="{{ route('home') }}" style="color: darkcyan;">Logout</a>
+                              </li>
+                          </ul>
+                      </li>
                 </ul>
             </div>
         </div>

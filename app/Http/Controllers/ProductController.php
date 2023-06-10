@@ -113,4 +113,21 @@ class ProductController extends Controller
             return redirect() -> route('manga.view');
         }
     }
+
+    public function searchProduct(Request $request) {
+        $query = $request -> query('query');
+
+        // If no query is provided for search, view all products
+        if (empty($query)) {
+            $products = Product::paginate(5);
+            $keyword = '';
+        }
+        // Perform the search query to fetch the search results
+        else {
+            $products = Product::where('name', 'like', '%' . $query . '%') -> orWhere('description', 'like', '%' . $query . '%') -> paginate(5);
+            $keyword = $query;
+        }
+
+        return view('search', ['title' => 'Search Results', 'products' => $products, 'keyword' => $keyword]);
+    }
 }

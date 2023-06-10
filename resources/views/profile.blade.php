@@ -12,7 +12,7 @@
             <img src = "assets/profile/profile_img.jpg" class = "pfp-icon">
         </div>
     </section>
-    <br>
+    <hr>
     <section id = "user-data" class = "user-data">
         <div class = "username">
             <h3><b>Username</b></h3>

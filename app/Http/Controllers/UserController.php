@@ -52,10 +52,14 @@ class UserController extends Controller
     }
 
     public function auth() {
-        $credentials = $request->validate([
+        $credentials = $request -> validate([
             'email' => ['required', 'email'],
             'password' => 'required|min:8',
         ]);
+
+        if ($request -> remember) {
+            Cookie:queue('remember', 'yes');
+        }
 
         if (Auth::attempt($credentials, $request -> filled('remember-me'))) {
             $request -> session() -> regenerate();

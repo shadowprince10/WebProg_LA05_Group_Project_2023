@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('shipping', function (Blueprint $table) {
-            $table->increments('shipID');
+        Schema::create('delivery', function (Blueprint $table) {
+            $table->increments('deliveryID');
             $table->integer('cost')->default(0); // by default, the shipping cost is free
             $table->string('pickupLocation');
             $table->string('destination');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shipping');
+        Schema::dropIfExists('delivery');
     }
 };

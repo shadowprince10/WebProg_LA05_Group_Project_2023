@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Cart;
 use App\Models\Courier;
-use App\Models\Shipping;
+use App\Models\Delivery;
 use App\Models\Transaction;
+use App\Models\orderDetails;
 
 // attribute: orderID, orderDate, orderStatus, userID (foreign key), productID (foreign key), created_at, updated_at
 class Order extends Model
@@ -19,7 +21,7 @@ class Order extends Model
     public $fillable = ['orderDate', 'status'];
 
     public function product() {
-        return $this -> belongsTo(Product::class);
+        return $this -> hasMany(Product::class);
     }
 
     public function user() {
@@ -30,8 +32,12 @@ class Order extends Model
         return $this -> belongsTo(Courier::class);
     }
 
-    public function shipping() {
-        return $this -> belongsTo(Shipping::class);
+    public function cart() {
+        return $this -> belongsTo(Cart::class);
+    }
+
+    public function delivery() {
+        return $this -> belongsTo(Delivery::class);
     }
 
     public function transaction() {

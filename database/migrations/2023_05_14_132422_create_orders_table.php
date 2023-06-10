@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('orderID');
             $table->string('orderDate');
-            $table->string('orderStatus');
+            $table->string('status');
+            $table->integer('orderQuantity');
             $table->unsignedBigInteger('userID');
             $table->foreign('userID')->references('userID')->on('users');
             $table->unsignedBigInteger('productID');

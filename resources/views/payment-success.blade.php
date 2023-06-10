@@ -1,7 +1,7 @@
 @extends('layout_format.header')
 
 @section('container')
-    <section class = "h-100 h-custom" style = "background-color:skyblue;">
+    <section class = "h-100 h-custom">
         <div class = "container py-5 h-100">
             <div class = "alert alert-success" role = "alert">
                 Payment successful! Thanks for purchasing.
@@ -37,11 +37,11 @@
 
                             <div class = "row">
                                 <div class = "col-md-4 col-lg-9">
-                                    <p><b>Shipping Cost</b></p>
+                                    <p><b>Delivery Cost</b></p>
                                 </div>
 
                                 <div class = "col-md-4 col-lg-3">
-                                    <p>{{ $order -> shipping -> cost }}</p>
+                                    <p>{{ $order -> delivery -> cost }}</p>
                                 </div>
                             </div>
 

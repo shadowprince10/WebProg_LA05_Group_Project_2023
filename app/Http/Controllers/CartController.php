@@ -3,13 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cart;
 
 class CartController extends Controller
 {
     public function viewCart() {
         $cart = session('cart', []);
+        $cartProducts = Cart::content();
+        $deliveryCost = 0;
 
-        return view('cart', compact('cart'), ['title' => 'Cart']);
+        foreach ($cartProducts as $cp) {
+            $order = $cp -> order;
+                if ($order) {
+                    $delivery = $order -> delivery;
+                    if ($delivery) {
+                        $deliveryCost += $delivery -> cost;
+                    }
+                }
+        }
+
+        return view('cart', compact('cart', 'cartProducts', 'deliveryCost'), ['title' => 'Cart']);
     }
 
     public function addToCart(Request $request, Product $product) {
@@ -40,6 +53,19 @@ class CartController extends Controller
     }
 
     public function checkout() {
-        return view('checkout', ['title' => 'Checkout']);
+        $cartProducts = Cart::content();
+        $totalCost = 0;
+
+        foreach ($cartProducts as $cp) {
+            $order = $cp -> order;
+                if ($order) {
+                    $delivery = $order -> delivery;
+                    if ($delivery) {
+                        $totalCost += (($cp -> price) * ($cp -> quantity)) + ($delivery -> cost);
+                    }
+                }
+        }
+
+        return view('checkout', compact('cartProducts', 'totalCost'), ['title' => 'Checkout']);
     }
 }

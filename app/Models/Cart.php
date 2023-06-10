@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Product;
+use App\Models\Order;
 
 class Cart extends Model
 {
@@ -15,5 +18,9 @@ class Cart extends Model
 
     public function product() {
         return $this -> belongsTo(Product::class);
+    }
+
+    public function order() {
+        return $this -> hasOne(Order::class);
     }
 }
