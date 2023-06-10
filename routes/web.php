@@ -1,17 +1,5 @@
 <?php
 
-use App\Models\AppUser;
-use App\Models\Brand;
-use App\Models\Category;
-use App\Models\Courier;
-use App\Models\Order;
-use App\Models\OrderDetail;
-use App\Models\Product;
-use App\Models\Profile;
-use App\Models\Shipping;
-use App\Models\Transaction;
-use App\Models\WishlistProduct;
-
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;

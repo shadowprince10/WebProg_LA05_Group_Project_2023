@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('username');
             $table->string('email')->unique();
             // $table->timestamp('email_verified_at')->nullable();
+            $table -> enum('role', ['admin', 'customer']) -> default('customer');
             $table->string('password')->unique();
             $table->string('address');
             $table->string('phone');

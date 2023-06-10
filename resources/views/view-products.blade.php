@@ -30,6 +30,7 @@
                         <p class = "card-text">Quantity: {{ $product -> quantity }}</p>
                         <p class = "card-text">{{ $product -> description }}</p>
                         <p class = "card-text">Price: Rp. {{ $product -> price }}</p>
+
                         @if(auth() -> user() && auth() -> user() -> role === 'admin')
                             <div class = "d-flex justify-content-between">
                                 <a href = "{{ route('products.edit', $product -> productID) }}" class = "btn btn-primary btn-lg">Update</a>
