@@ -39,17 +39,17 @@
                         <input class="form-control me-2" type="search" name="query" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                       </form>
-                      <li class="nav-item dropdown">
+                      <li class = "nav-item dropdown">
                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                              data-bs-toggle="dropdown" aria-expanded="false" style="color: darkcyan;">
                               Profile
                           </a>
-                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <ul class="dropdown-menu" aria-labelledby = "navbarDropdown">
                               <li>
-                                  <a class="dropdown-item" href="{{ route('cart') }}" style="color: darkcyan;">View Cart</a>
+                                  <a class="dropdown-item" href="{{ route('cart.view') }}" style="color: darkcyan;">View Cart</a>
                               </li>
                               <li>
-                                  <a class="dropdown-item" href="{{ route('home') }}" style="color: darkcyan;">Logout</a>
+                                  <a class="dropdown-item" href="{{ route('homepage') }}" style="color: darkcyan;">Logout</a>
                               </li>
                           </ul>
                       </li>

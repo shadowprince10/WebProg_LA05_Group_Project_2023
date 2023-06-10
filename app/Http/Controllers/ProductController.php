@@ -114,6 +114,12 @@ class ProductController extends Controller
         }
     }
 
+    public function viewProductsBasedOnCategory($category) {
+        $products = Product::where('category', $category) -> get();
+
+        return view('view-products', ['products' => $products]);
+    }
+
     public function searchProduct(Request $request) {
         $query = $request -> query('query');
 
