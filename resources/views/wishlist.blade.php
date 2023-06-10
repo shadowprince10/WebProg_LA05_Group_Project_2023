@@ -7,6 +7,8 @@
     <title></title>
 </head>
 <body>
+    @extends('layout_format.header')
+
     @if ($wishlist -> isEmpty())
         <a href = "{{ route('homepage') }}" class = "btn btn-primary">+ Create New Wishlist</a>
     {{-- href = "{{ route('home') }} to redirect user to home page to add products to the wishlist once the user clicked on the button "+ Create New Wishlist" --}}
@@ -19,5 +21,7 @@
                 </li>
             @endforeach
         </ul>
+
+    @extends('layout_format.footer')
 </body>
 </html>
