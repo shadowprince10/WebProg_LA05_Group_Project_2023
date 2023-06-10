@@ -3,7 +3,7 @@
 {{-- Categories: clothes, figure, key chain, stationary, manga (comic) --}}
 @section('container')
     <div class = "bg-info">
-        <h2 style = "color:black;"><b>Categories</b></h2>
+        <h2 style = "color:blue;"><b>Categories</b></h2>
         {{-- Outfits Category Section --}}
         <div class = "col-md-3 mb-4">
             <div class = "card">

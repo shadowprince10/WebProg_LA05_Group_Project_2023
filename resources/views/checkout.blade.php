@@ -3,7 +3,7 @@
 @section('container')
     <main class = "mt-5 pt-4">
         <div class="container wow fadeIn">
-            <h2 class = "my-5 h2 text-center" style = "color:black;">Checkout</h2>
+            <h2 class = "my-5 h2 text-center" style = "color:blue;">Checkout</h2>
 
             {{-- grid row --}}
             <div class = "row">
@@ -43,6 +43,7 @@
                                             <option value = "bank">Bank Transfer</option>
                                         </select>
                                     </div>
+                                    <button class = "btn btn-primary btn-lg" type="submit">Confirm Payment</button>
                                 </div>
                             </div>
 
