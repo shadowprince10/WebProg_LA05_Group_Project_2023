@@ -11,6 +11,6 @@ class OrderDetail extends Model
     use HasFactory;
 
     protected $table = 'order_details';
-    public $fillable = ['orderProduct', 'orderQuantity', 'orderSubtotal'];
+    public $fillable = ['orderQuantity', 'orderSubtotal'];
 }
 

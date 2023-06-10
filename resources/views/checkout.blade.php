@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href = "/css/bootstrap.min.css" rel = "stylesheet">
-    <title><h1><b><u>Checkout</u></b></h1></title>
-</head>
-<body>
+@section('container')
     <form method = "POST" action = "/payment">
         @csrf
 
@@ -20,29 +11,32 @@
                         <th>Quantity</th>
                         <th>Price per Product</th>
                         <th>Discount</th>
+                        <th>Subtotal</th>
                         <th>Shipping Cost</th>
-                        <th>Total Price</th>
+                        <th>Total</th>
                     </tr>
                 </thead>
                 <tbody>
                     {{-- harus di-research lagi bagaimana cara memasukkan data order dari customer ke tabel di bagian order summary --}}
-                    @foreach($order -> product as $item)
+                    @foreach($order -> product as $product)
                         <tr>
-                            <td>{{ $item -> productName }}</td>
-                            <td>{{ $item -> productQuantity }}</td>
-                            <td>{{ $item -> price }}</td>
-                            <td>{{ $item -> productQuantity * $item -> price }}</td>
+                            <td>{{ $product -> name }}</td>
+                            <td>{{ $product -> quantity }}</td>
+                            <td>{{ $product -> price }}</td>
+                            <td>{{ $product -> discount }}</td>
+                            <td>{{ $order -> shipping -> cost }}</td>
+                            <td>{{ ($product -> quantity * $product -> price) + ($order -> shipping -> cost) - ($product -> discount * $product -> price) }}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-            <p>Order Total: {{ $order -> orderSubtotal }}</p>
+            <p>Order Total: {{ ($product -> quantity * $product -> price) + ($order -> shipping -> cost) - ($product -> discount * $product -> price) }}</p>
         <div>
         <br>
         <br>
         <label for = "payment-method"><h2><b>Select Payment Method</b></h2></label>
-        <div class = "payment-form-group">
-            <select class = "payment-form-control" id = "payment-method" name = "payment-method" required>
+        <div class = "form-group">
+            <select class = "form-control" id = "payment-method" name = "payment-method" required>
                 <option value = "credit_debit_card">Credit/Debit Card</option> {{-- seharusnya kalau pencet option credit/debit card, redirect user ke page untuk mengisi detail kartu kredit/debit seperti kartu, berlaku hingga, dan CVV (mm/yyyy) --}}
                 <option value = "paypal">PayPal</option>
                 <option value = "gopay">GoPay</option>
@@ -52,10 +46,12 @@
             </select>
         </div>
         <div>
-            <button type = "submit">Pay Now</button>
+            <button type = "submit">Confirm Payment</button>
         </div>
 
-        {{-- cara setelah payment confirmed, lalu redirect ke payment success page, kemudian redirect ke payment summary page? --}}
+        {{-- setelah payment confirmed, redirect ke payment summary page --}}
     </form>
-</body>
-</html>
+@endsection
+
+{{-- References --}}
+{{-- a. https://mdbootstrap.com/docs/standard/extended/payment-forms/ --}}

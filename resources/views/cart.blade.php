@@ -10,7 +10,7 @@
 <body>
     @section('container')
         <div class = "cart">
-            @if(count($cartProducts) > 0)
+            @if(count($cart) > 0)
                 <table>
                     <thead>
                         <tr>
@@ -21,12 +21,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($cartProducts)
+                        @foreach($cart)
                             <tr>
                                 <td>{{ $cart -> product -> name }}</td>
                                 <td>{{ $cart -> product -> price }}</td>
                                 <td>{{ $cart -> product -> quantity }}</td>
-                                <td>{{ ($cart -> product -> price) * ($cartProducts -> product -> quantity) }}</td>
+                                <td>{{ ($cart -> product -> price) * ($cart -> product -> quantity) }}</td>
                             </tr>
                         @endforeach
 
@@ -38,7 +38,7 @@
             @else
                 <p>Oops, your cart is empty... go explore products you'd like to buy!</p>
                 <div class="view-products-button">
-                    <a href="{{ route('view-product') }}">Shop Now</a>
+                    <a href="{{ route('products.view') }}">Shop Now</a>
                 </div>
             @endif
         </div>

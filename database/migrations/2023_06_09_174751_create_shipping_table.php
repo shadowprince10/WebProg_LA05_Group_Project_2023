@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('shipping', function (Blueprint $table) {
             $table->increments('shipID');
-            $table->integer('deliveryCost');
+            $table->integer('cost')->default(0); // by default, the shipping cost is free
             $table->string('pickupLocation');
             $table->string('destination');
             $table->unsignedBigInteger('productID');

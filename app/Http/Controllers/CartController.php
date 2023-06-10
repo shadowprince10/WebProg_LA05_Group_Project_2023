@@ -40,6 +40,6 @@ class CartController extends Controller
     }
 
     public function checkout() {
-        return view('checkout');
+        return view('checkout', ['title' => 'Checkout']);
     }
 }

@@ -50,7 +50,7 @@ Route::middleware(['auth', 'admin']) -> group(function () {
         Route::get('/', [ProductController::class, 'viewProducts']) -> name('products.view');
         Route::get('/create', [ProductController::class, 'postProducts']) -> name('products.post'); // input product data to add or post to the Pasar Anime web page
         Route::post('/', [ProductController::class, 'addProducts']) -> name('products.add'); // store inputted product data to database and post products based on the inputted product data
-        Route::get('/{productID}', [ProductController::class, 'viewProductsBasedOnID']) -> name('productID.view');
+        // Route::get('/{productID}', [ProductController::class, 'viewProductsBasedOnID']) -> name('productID.view');
         Route::get('/{product}/edit', [ProductController::class, 'editProducts']) -> name('products.edit'); // input product data to update/edit
         Route::put('/{product}', [ProductController::class, 'updateProducts']) -> name('products.update'); // update product based on inputted product data for updates
         Route::delete('/{product}', [ProductController::class, 'deleteProducts']) -> name('products.delete');
@@ -78,8 +78,9 @@ Route::middleware(['auth', 'customer']) -> group(function () {
     Route::prefix('/cart') -> group(function() {
         Route::get('/', [CartController::class, 'viewCart']) -> name('cart.view');
         Route::get('/{cartID}/add', [CartController::class, 'addToCart']) -> name('cart.add');
-        Route::delete('/{cardID}/checkout', [CartController::class, 'editProduct']) -> name('cart.edit');
+        Route::delete('/{cartID}', [CartController::class, 'removeFromCart']) -> name('cart.delete');
         Route::put('/{cartID}/update', [CartController::class, 'updateCart']) -> name('cart.update');
+        Route::get('/{cartID}/checkout', [CartController::class, 'checkout']) -> name('cart.checkout');
     });
 
     Route::prefix('/wishlist') -> group(function() {

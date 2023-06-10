@@ -7,9 +7,15 @@ use App\Models\Order;
 
 class OrderController extends Controller
 {
-    public function viewOrder() {
+    public function viewOrder($orderID) {
         $order = Order::find($orderID);
 
         return view('order', compact('order'), ['title' => 'Order']);
+    }
+
+    public function viewPurchaseSuccess($orderID) {
+        $order = Order::find($orderID);
+
+        return view('order', compact('order'));
     }
 }
